@@ -1,0 +1,18 @@
+version: '3'
+
+services:
+  db:
+    image: postgres
+    volumes:
+      - .:/docker-entrypoint-initdb.d/
+    ports:
+      - "5433:5432"
+  web:
+    build: .
+    command: python src/spam_reports_project/manage.py runserver 0.0.0.0:8000
+    volumes:
+      - .:/code
+    ports:
+      - "8000:8000"
+    links:
+      - db
