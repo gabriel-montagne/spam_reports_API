@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'spam_reports_api',
 ]
 
 MIDDLEWARE = [
@@ -74,12 +75,12 @@ WSGI_APPLICATION = 'spam_reports_project.wsgi.application'
 # https://docs.djangoproject.com/en/1.11/ref/settings/#databases
 
 DATABASES = {
-    'default':
+    'default': {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'spamreports',
         'USER': 'admin',
         'PASSWORD': 'admin1234',
-        'HOST': '127.0.0.1',
+        'HOST': 'db',
         'PORT': '5432',
     }
 }

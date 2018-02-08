@@ -4,12 +4,12 @@ services:
   db:
     image: postgres
     volumes:
-      - .:/docker-entrypoint-initdb.d/
+      - ./db_init:/docker-entrypoint-initdb.d/
     ports:
       - "5433:5432"
   web:
     build: .
-    command: python src/spam_reports_project/manage.py runserver 0.0.0.0:8000
+    command: sh runserver.sh
     volumes:
       - .:/code
     ports:
