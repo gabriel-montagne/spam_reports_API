@@ -16,17 +16,17 @@ class PayloadItemSerializer(serializers.Serializer):
         fields = ['id', 'source', 'reportType', 'message', 'reportId', 'referenceResourceId', 'referenceResourceType']
 
 class ReferenceItemSerializer(serializers.Serializer):
-    referenceId = serializers.CharField(min_length=255)
-    referenceType = serializers.CharField(min_length=255)
+    referenceId = serializers.CharField(max_length=255)
+    referenceType = serializers.CharField(max_length=255)
     class Meta:
         model = models.ReferenceItem
         fields = ['referenceId', 'referenceType']
 
-class SpamReportItemSerializer(serializers.Serializer):
-    id = serializers.CharField(min_length=255)
-    source = serializers.CharField(min_length=255)
-    sourceIdentityId = serializers.CharField(min_length=255)
-    state = serializers.CharField(min_length=255)
+class SpamReportItemSerializer(serializers.ModelSerializer):
+    id = serializers.CharField(max_length=255)
+    source = serializers.CharField(max_length=255)
+    sourceIdentityId = serializers.CharField(max_length=255)
+    state = serializers.CharField(max_length=255)
     reference = ReferenceItemSerializer(many=False, read_only=True)
     payload = PayloadItemSerializer(many=False, read_only=True)
     created = serializers.DateTimeField()
