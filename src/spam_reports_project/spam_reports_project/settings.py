@@ -14,6 +14,9 @@ import os
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+FIXTURE_DIRS = (
+   os.path.join(BASE_DIR, 'fixtures'),
+)
 
 
 # Quick-start development settings - unsuitable for production
@@ -37,6 +40,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'rest_framework',
+    'rest_framework.authtoken',
     'spam_reports_api',
 ]
 
@@ -74,17 +79,24 @@ WSGI_APPLICATION = 'spam_reports_project.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.11/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'spamreports',
+#         'USER': 'admin',
+#         'PASSWORD': 'admin1234',
+#         'HOST': '127.0.0.1',
+#         'PORT': '5432',
+#     }
+# }
+
+
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'spamreports',
-        'USER': 'admin',
-        'PASSWORD': 'admin1234',
-        'HOST': 'db',
-        'PORT': '5432',
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/1.11/ref/settings/#auth-password-validators
