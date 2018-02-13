@@ -73,3 +73,6 @@ pasword: asdf1234
 (spamreports_api) vagrant@ubuntu-xenial:/vagrant/src/spam_reports_project > python manage.py createsuperuser)
 ```
 - navigate to [api/spamreports](localhost:8080/api/spamreports)
+
+## Docker
+to run the app in docker with PostreSQL 

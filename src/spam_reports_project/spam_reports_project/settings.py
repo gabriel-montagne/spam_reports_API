@@ -68,7 +68,6 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
-
 CORS_ORIGIN_ALLOW_ALL = True
 CORS_ALLOW_CREDENTIALS = True
 CORS_ORIGIN_WHITELIST = (
@@ -101,25 +100,28 @@ WSGI_APPLICATION = 'spam_reports_project.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/1.11/ref/settings/#databases
+PERSISTANCE_LAYER = True
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.postgresql',
-#         'NAME': 'spamreports',
-#         'USER': 'admin',
-#         'PASSWORD': 'admin1234',
-#         'HOST': '127.0.0.1',
-#         'PORT': '5432',
-#     }
-# }
+if PERSISTANCE_LAYER:
 
-
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql',
+            'NAME': 'spamreports',
+            'USER': 'admin',
+            'PASSWORD': 'admin1234',
+            'HOST': 'db',
+            'PORT': '5432',
+        }
     }
-}
+else:
+    print(os.environ.get('DJANGO_SQLITE_FILENAME'))
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        }
+    }
 
 # Password validation
 # https://docs.djangoproject.com/en/1.11/ref/settings/#auth-password-validators
