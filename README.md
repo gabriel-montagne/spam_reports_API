@@ -75,4 +75,13 @@ pasword: asdf1234
 - navigate to [api/spamreports](localhost:8080/api/spamreports)
 
 ## Docker
-to run the app in docker with PostreSQL 
+to run the app in docker with PostreSQL persistance layer run:
+```
+> docker-compose up
+```
+navigate to [localhost:8000/admin](localhost:8000/admin). Use the following credential to login
+:
+```
+user = admin
+password= asdf1234
+```
