@@ -71,10 +71,10 @@ MIDDLEWARE = [
 CORS_ORIGIN_ALLOW_ALL = True
 CORS_ALLOW_CREDENTIALS = True
 CORS_ORIGIN_WHITELIST = (
-    'localhost:8080',
+    'http://localhost',
 )
 CORS_ORIGIN_REGEX_WHITELIST = (
-    'localhost:8080',
+    'http://localhost',
 )
 
 ROOT_URLCONF = 'spam_reports_project.urls'
